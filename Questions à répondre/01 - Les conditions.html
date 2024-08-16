@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Les variables</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #e0f7fa;
+      /* Bleu clair pour l'arrière-plan de la page */
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      color: #00796b;
+      /* Bleu foncé pour le titre */
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #ffffff;
+      /* Blanc pour le fond du formulaire */
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      /* Ombre pour donner de la profondeur */
+    }
+
+    label {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 300px;
+      margin-bottom: 10px;
+      color: #00796b;
+      /* Bleu foncé pour les labels */
+    }
+
+    input[type="text"] {
+      width: 60%;
+      padding: 5px;
+      border: 1px solid #00796b;
+      /* Bordure bleue foncée pour les champs de texte */
+      border-radius: 5px;
+    }
+
+    input[type="submit"] {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #0288d1;
+      /* Bleu moyen pour le bouton de soumission */
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0277bd;
+      /* Bleu plus foncé pour le bouton de soumission au survol */
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <h1>JavaScript</h1>
+    <p>Les conditions sont
+    </p>
+    <p>Coche si la réponse est vrai</p>
+    <form id="form">
+      <label for="q1">
+        q1<code>if (true)</code>
+        <input type="checkbox" id="q1">
+      </label>
+      <label for="q2">
+        q2<code>if ("true")</code>
+        <input type="checkbox" id="q2">
+      </label>
+      <label for="q3">
+        q3<code>if ('true')</code>
+        <input type="checkbox" id="q3">
+      </label>
+      <label for="q4">
+        q4<code>if ("")</code>
+        <input type="checkbox" id="q4">
+      </label>
+      <label for="q5">
+        q5<code>if (1)</code>
+        <input type="checkbox" id="q5">
+      </label>
+      <label for="q6">
+        q6<code>if (0)</code>
+        <input type="checkbox" id="q6">
+      </label>
+      <label for="q7">
+        q7<code>if (undefined)</code>
+        <input type="checkbox" id="q7">
+      </label>
+      <label for="q8">
+        q8<code>if (null)</code>
+        <input type="checkbox" id="q8">
+      </label>
+      <label for="q9">
+        q9<code>if (null == null)</code>
+        <input type="checkbox" id="q9">
+      </label>
+      <label for="q10">
+        q10<code>if (null == undefined)</code>
+        <input type="checkbox" id="q10">
+      </label>
+      <label for="q11">
+        q11<code>if (null === undefined)</code>
+        <input type="checkbox" id="q11">
+      </label>
+      <label for="q12">
+        q12<code>if (0 == false)</code>
+        <input type="checkbox" id="q12">
+      </label>
+      <label for="q13">
+        q13<code>if (!!0 === false)</code>
+        <input type="checkbox" id="q13">
+      </label>
+      <input type="submit" value="Soumettre">
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('form').addEventListener('submit', function (e) {
+      e.preventDefault(); // Empêche le rechargement de la page
+
+      const answers = [];
+      for (let i = 1; i <= 13; i++) {
+
+        answers.push({ [`q${i}`]: document.getElementById(`q${i}`).checked })
+      }
+
+      fetch('https://iwaapireponses-52bcc7b50c3d.herokuapp.com/conditions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ answers })
+      })
+        .then(response => response.json())
+        .then(data => {
+          alert(data.message); // Affiche le message de l'API dans une boîte d'alerte
+        })
+        .catch(error => {
+          alert('Erreur : ' + error.message); // Affiche une alerte en cas d'erreur
+        });
+    });
+  </script>
+</body>
+
+</html>

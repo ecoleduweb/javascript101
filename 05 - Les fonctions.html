@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<title>Les fonctions</title>
+	<meta charset="utf-8" />
+</head>
+
+<body>
+	<script>
+		'use strict'
+		// une fonction de type.... classique?
+		function afficher(texte) {
+			console.log("J'affiche : " + texte);
+		}
+
+		// Une fonction 2024, une arrow function
+		const afficherArrow = (texte) => {
+			console.log(`J'affiche : ${texte}`);
+		}
+
+		// Quand on ne passe qu'une seule valeur en paramètre,
+		// les parenthèses sont optionnelles
+		const afficherArrow2 = texte => {
+			console.log(`J'affiche : ${texte}`);
+		}
+
+		// Quand on retourne une valeur :
+		const additionne = (val1, val2) => {
+			return val1 + val2
+		}
+
+		// Quand on retourne une valeur sur une seule ligne:
+		// les {} sont optionnels
+		const additionne2 = (val1, val2) => val1 + val2
+
+		afficher("allo")
+		afficherArrow("salut")
+		console.log(additionne(2, 3))
+		console.log(additionne2(2, 3))
+	</script>
+</body>
+
+</html>

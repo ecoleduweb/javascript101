@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<title>Les variables</title>
+	<meta charset="utf-8" />
+</head>
+
+<body>
+	<script>
+		// const, var, let
+
+		// on commence le nom des variables par une minuscule
+
+		// Les types
+		// 1. String
+		const nom = "antoine"
+		// 2. Number
+		const age = 34
+		// 3. Bigint - Un gros  int. Jamais utilisé encore
+		// 4. Boolean
+		const homme = true
+		// 5. Undefined --> On a déclaré une valeur, mais elle n'est pas assignée.
+		const chalet = undefined
+		let chalet2 // est undefined
+		// 6. Null --> On a déclaré une valeur, elle est assignée à la valeur null.
+		const collation = null
+		// 7. Symbol - Jamais utilisé. De la lecture --> https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol
+		// 8. Object
+		// 8.1 les tableaux (On y revient plus loin)
+		// 8.2 les objets
+		let person = {
+			age: 34,
+			homme: true,
+			chalet: undefined
+		}
+
+		person = {
+			age: age,
+			homme: homme,
+			chalet: chalet
+		}
+		// short hand
+		person = {
+			age,
+			homme,
+			chalet
+		}
+
+		const vrai = true
+		if (vrai === true) {
+			alert("c'est vrai")
+		} else if (!vrai) {
+			alert("c'est pas vrai")
+		} else {
+			alert("ni faux ni vrai")
+		}
+	</script>
+</body>
+
+</html>

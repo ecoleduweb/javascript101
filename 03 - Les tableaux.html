@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<title>Les tableaux</title>
+	<meta charset="utf-8" />
+</head>
+
+<body>
+	<script>
+		'use strict'
+		// comment declarer un tableau 1
+		const monTableau1 = []
+
+		// comment declarer un tableau 2
+		// le tableau a une longueur de 10
+		const monTableau2 = new Array(10)
+
+		// mal propre
+		monTableau1[0] = 'Marty '
+		monTableau1[1] = 'Mc '
+		monTableau1[2] = 'Fly'
+		console.table(monTableau1)
+
+		const tableauPropre = []
+		// push ajoute à la fin du tableau
+		tableauPropre.push('est')
+		tableauPropre.push('un')
+		tableauPropre.push(0.5)
+		tableauPropre.push('dieu')
+
+		// ajoute au début du tableau
+		console.table(tableauPropre)
+
+		//retire un élément au début du tableau
+		tableauPropre.shift()
+		//retire un élément à la fin du tableau
+		tableauPropre.pop()
+
+		tableauPropre.unshift("Antoine")
+		const nbElem = tableauPropre.length
+		for (let i = 0; i < nbElem; i++) {
+			console.log(tableauPropre[i])
+		}
+
+		for (let item of tableauPropre) {
+			console.log(item)
+		}
+
+		// Pour plus de détails sur les tableaux
+		// https://www.w3schools.com/js/js_array_methods.asp
+	</script>
+</body>
+
+</html>
+<script>
+</script>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Les variables</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #e0f7fa;
+      /* Bleu clair pour l'arrière-plan de la page */
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      color: #00796b;
+      /* Bleu foncé pour le titre */
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #ffffff;
+      /* Blanc pour le fond du formulaire */
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      /* Ombre pour donner de la profondeur */
+    }
+
+    label {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 300px;
+      margin-bottom: 10px;
+      color: #00796b;
+      /* Bleu foncé pour les labels */
+    }
+
+    input[type="text"] {
+      width: 60%;
+      padding: 5px;
+      border: 1px solid #00796b;
+      /* Bordure bleue foncée pour les champs de texte */
+      border-radius: 5px;
+    }
+
+    input[type="submit"] {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #0288d1;
+      /* Bleu moyen pour le bouton de soumission */
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0277bd;
+      /* Bleu plus foncé pour le bouton de soumission au survol */
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <h1>JavaScript</h1>
+    <p>JavaScript est un langage faiblement typé. Ça veut donc dire qu'il est possible d'assigner un int à a un variable
+      et ensuite un objet!
+    </p>
+    <p>Il existe septs types primitifs de variables en javascript. Peux-tu les identifier?</p>
+    <form id="form">
+      <label for="type1">
+        Premier type
+        <input type="text" id="type1">
+      </label>
+      <label for="type2">
+        Deuxième type
+        <input type="text" id="type2">
+      </label>
+      <label for="type3">
+        Troisième type
+        <input type="text" id="type3">
+      </label>
+      <label for="type4">
+        Quatrième type
+        <input type="text" id="type4">
+      </label>
+      <label for="type5">
+        Cinquième type
+        <input type="text" id="type5">
+      </label>
+      <label for="type6">
+        Sixième type
+        <input type="text" id="type6">
+      </label>
+      <label for="type7">
+        Septième type
+        <input type="text" id="type7">
+      </label>
+      <input type="submit" value="Soumettre">
+    </form>
+    <img src="./types.jpg" alt="">
+  </div>
+
+  <script>
+    document.getElementById('form').addEventListener('submit', function (e) {
+      e.preventDefault(); // Empêche le rechargement de la page
+
+      const answers = [];
+      for (let i = 1; i <= 7; i++) {
+        answers.push(document.getElementById(`type${i}`).value.trim())
+      }
+
+      fetch('https://iwaapireponses-52bcc7b50c3d.herokuapp.com/types', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ answers })
+      })
+        .then(response => response.json())
+        .then(data => {
+          alert(data.message); // Affiche le message de l'API dans une boîte d'alerte
+        })
+        .catch(error => {
+          alert('Erreur : ' + error.message); // Affiche une alerte en cas d'erreur
+        });
+    });
+  </script>
+</body>
+
+</html>

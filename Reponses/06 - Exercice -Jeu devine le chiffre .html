@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<title>Devine le chiffre</title>
+		<meta charset="utf-8"/>
+	</head>
+	<style>
+		body {
+		  display: flex;
+		  justify-content: center;
+		  align-items: center;
+		  height: 100vh;
+		  margin: 0;
+		  background-color: #f0f0f0;
+		}
+	  
+		.container {
+		  text-align: center;
+		}
+	  
+		input[type="text"] {
+		  padding: 10px;
+		  font-size: 16px;
+		  border: 1px solid #ccc;
+		  border-radius: 5px;
+		}
+	  
+		button {
+		  padding: 10px 20px;
+		  font-size: 16px;
+		  background-color: #007bff;
+		  color: white;
+		  border: none;
+		  border-radius: 5px;
+		  cursor: pointer;
+		}
+	  
+		button:hover {
+		  background-color: #0056b3;
+		}
+	  </style>
+	  </head>
+	  <body>
+	  <div class="container">
+		<input type="text" id="textInput" placeholder="Entrez votre texte">
+		<button id="submitButton">Valider</button>
+	  </div>
+		<script>
+
+			const nombreAleatoire = (min, max) => {
+				if (min === max) {
+					return min
+				}
+				else if (min > max) {
+					return null
+				}
+				return Math.floor(Math.random()*(max + 1 - min)) + min
+			} 
+			// Votre travail
+			// 1. Donner une valeur aléatoire entre 1 et 10 à la variable nombre.
+			let nombre = nombreAleatoire(0,5)
+			
+			// 2. Créez une fonction validerChiffre et validez si la valeur du chiffre est cette choisie au hasard.
+			// Si vous avez trouvé le nombre, appelez la fonction nombreTrouve
+			// Utlisez la fonction valeurNombre pour avoir la valeur du nombre entré dans le champ
+			// note : attention au ===
+			const validerChiffre = () => {
+				if (nombre === +valeurNombre())
+				nombreTrouve(nombre)
+			}
+			
+			// 3. nombreTrouve affiche le nombre trouvé et recommence une nouvelle partie
+			// BONUS : effacer la valeur du nombre trouvé dans le champ texte
+			const nombreTrouve = () => {
+				alert(`Vous avez trouvé le nombre : ${nombre}`)
+				document.getElementById("textInput").value = ''
+				nombre = nombreAleatoire(0, 5)
+			}
+
+			// BONUS créer une fonction qui retourne un nombre aléatoire entre une valeur min et max.
+			// Black magic, don't touch
+			document.getElementById("submitButton").addEventListener("click", validerChiffre)
+			const valeurNombre = () => document.getElementById("textInput").value
+		</script>
+	</body>
+</html>

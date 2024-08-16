@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<title>Exercice - math</title>
+		<meta charset="utf-8"/>
+	</head>
+	<body>
+		<script>
+			const data = []
+			let sum = 0
+			let max = -1
+			let min = 102
+			let avg = sum/data.length
+			// Partie 1
+			// Faire une boucle d'insertion de 20 valeurs numériques aléatoires dans la variable data
+			// Bonus
+			// Les valeurs doivent être entre 0 et 100 (entières)
+			// Astuce : Utiliser Math.floor() pour retirer les chiffres après la virgule
+			for (let i = 0; i < 20; i++){
+				data.push(Math.floor(Math.random()*101))
+			}
+			
+			// Partie 2
+			// Boucler sur le tableau afin d'en extraire : 
+			// la valeur minimale (min), maximale (max), la moyenne (avg) et la somme (sum)
+			data.forEach(e => {
+				sum+=e
+			})
+
+			for(let e of data){
+				if (min > e){
+					min = e
+				}
+			}
+
+			for (let i = 0; i < 20; i++){
+				if (max < data[i]){
+					max = data[i]
+				}
+			}
+
+			avg = sum/data.length
+			console.table(data);
+			console.log(`Rapport d'analyse du tableau ${data}`);
+			console.log(`La somme est : ${sum}`);
+			console.log(`La valeur minimale est : ${min}`);
+			console.log(`La valeur maximale est : ${max}`);
+			console.log(`La moyenne est : ${avg}`);			
+
+			// Partie BONUS
+			// indiquer si le tableau contient des valeurs en doubles.
+			for (let i = 0; i < 20; i++){
+                for (let j = i + 1; j < 20; j++){
+                    if (data[i] == data[j]) {
+                        console.log(`La valeur ${data[i]} se retrouve à l'index ${i} et ${j}`)
+                    }
+                }
+            }
+		</script>
+	</body>
+</html>
